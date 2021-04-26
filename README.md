@@ -2,7 +2,7 @@
 
 ## 例子
 
-```
+```sh
 $ awk -f sfzcx.awk ../gb2260/gb2260/data/latest.csv
 
 公民身份证号信息查询awk源程序！
@@ -23,6 +23,11 @@ $ awk -f sfzcx.awk ../gb2260/gb2260/data/latest.csv
 ```
 
 ## 安装方法
+
+1. `git clone https://github.com/khaeru/gb2260.git`
+2. `git clone https://github.com/mike2718/sfzcx.git`
+3. `cd sfzcx`
+4. `awk -f sfzcx.awk ../gb2260/gb2260/data/latest.csv`
 
 ## 程序设计的理念
 

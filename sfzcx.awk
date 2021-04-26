@@ -41,13 +41,14 @@ BEGIN {
     mm = substr(csrq,5,2)+0 # 出生月
     dd = substr(csrq,7,2)+0 # 出生日
     ################### 可能要经常更新
-    date = 2021 # 当前年
+    date = 2021       # 当前年
     ################### 可能要经常更新
     # https://en.wikipedia.org/wiki/Oldest_people
     old = date - 118 # 最老者的出生年
 
     if(yy>=old && yy<=date)
     {
+        yyv = 1
         printf("[●] 出生日期码的年部分有效\n");
     }
     if(yy<old)
@@ -59,6 +60,7 @@ BEGIN {
         printf("[×] 该身份证号有问题！出生日期码的年(%s)晚于当前年(%s)，该持有者不可能办得身份证\n", yy, date);
     }
     if(mm>=1 && mm<=12) {
+        mmv = 1
         printf("[●] 出生日期码的月部分有效\n");
     }
     if (mm<1 || mm>12) {
@@ -67,16 +69,48 @@ BEGIN {
     if(mm)
     {
         #check days
-        if ((dd>=1 && dd<=31) && (mm==1 || mm==3 || mm==5 || mm==7 || mm==8 || mm==10 || mm==12))
+        if ((dd>=1 && dd<=31) && (mm==1 || mm==3 || mm==5 || mm==7 || mm==8 || mm==10 || mm==12)) {
+            ddv = 1
             printf("[●] 出生日期码的日部分有效\n");
-        else if ((dd>=1 && dd<=30) && (mm==4 || mm==6 || mm==9 || mm==11))
+        }
+        else if ((dd>=1 && dd<=30) && (mm==4 || mm==6 || mm==9 || mm==11)) {
+            ddv = 1
             printf("[●] 出生日期码的日部分有效\n");
-        else if ((dd>=1 && dd<=28) && (mm==2))
+        }
+        else if ((dd>=1 && dd<=28) && (mm==2)) {
+            ddv = 1
             printf("[●] 出生日期码的日部分有效\n");
-        else if (dd==29 && mm==2 && (yy%400==0 ||(yy%4==0 && yy%100!=0)))
+        }
+        else if (dd==29 && mm==2 && (yy%400==0 ||(yy%4==0 && yy%100!=0))) {
+            ddv = 1
             printf("[●] 出生日期码的日部分有效\n");
-        else
+        }
+        else {
             printf("[×] 该身份证号有问题！出生日期码的日(%s)不符合日期的月日规律\n", dd);
+        }
+    }
+    arr[1] = "虎"
+    arr[2] = "兔"
+    arr[3] = "龙"
+    arr[4] = "蛇"
+    arr[5] = "马"
+    arr[6] = "羊"
+    arr[7] = "猴"
+    arr[8] = "鸡"
+    arr[9] = "狗"
+    arr[10] = "猪"
+    arr[11] = "鼠"
+    arr[12] = "牛"
+    # 计算周岁和生肖
+    if (yyv  && (date >= yy)) {
+        if ((!mmv) && (!ddv)) {
+            print "[△] 出生月和出生日有问题，计算出来的年龄和生肖可能有问题"
+        }
+        printf "[●] 年龄（周岁）\t%s\n", date - yy
+        printf "[●] 生肖\t%s\n", arr[(12 - (date - yy) % 12)]
+    }
+    else {
+        print "[×] 当前年或出生年有问题，无法计算年龄和生肖"
     }
     # 检查顺序码
     if ((sx + 0) % 2 == 0) {

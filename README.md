@@ -37,5 +37,5 @@ $ awk -f sfzcx.awk ../gb2260/gb2260/data/latest.csv
 
 ## 依赖
 
-- [One true awk (version 20180827)](https://github.com/onetrueawk/awk)
+- [One true awk (version 20180827)](https://github.com/onetrueawk/awk/releases/tag/20180827)
 - [GB/T 2260 codes for the administrative divisions of the People's Republic of China](https://github.com/khaeru/gb2260)

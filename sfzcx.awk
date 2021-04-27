@@ -46,7 +46,7 @@ BEGIN {
     # https://en.wikipedia.org/wiki/Oldest_people
     old = 1862 # 1984 - 122 最老者的出生年
 
-    if(yy>=old && yy<=this_y)
+    if(yy>=old && yy<=9999)
     {
         printf("[●] 出生日期码的年有效\n");
     }

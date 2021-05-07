@@ -138,8 +138,8 @@ BEGIN {
 {
     # 找符合的地址
     dz1_6 = substr(num,1,6) # 县级
-    dz1_4 = substr(num,1,4)"00" # 直辖市级
-    dz1_2 = substr(num,1,2)"0000" # 自治区级
+    dz1_4 = substr(num,1,4) "00" # 直辖市级
+    dz1_2 = substr(num,1,2) "0000" # 自治区级
 
     if ((dz1_2 == $1) && $3 == "1") {
         dzq = $2
